@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<phpunit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:noNamespaceSchemaLocation="vendor/phpunit/phpunit/phpunit.xsd"
+         bootstrap="vendor/autoload.php"
+         colors="true"
+         cacheDirectory=".phpunit.cache"
+         failOnRisky="false"
+         failOnWarning="false">
+    <testsuites>
+        <testsuite name="s1-fizzbuzz">
+            <directory>s1-fizzbuzz/tests</directory>
+        </testsuite>
+        <testsuite name="s2-bank-account">
+            <directory>s2-bank-account/tests</directory>
+        </testsuite>
+        <testsuite name="s3-gildedrose">
+            <directory>s3-gildedrose/tests</directory>
+        </testsuite>
+    </testsuites>
+</phpunit>

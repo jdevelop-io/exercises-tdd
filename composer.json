@@ -1,0 +1,37 @@
+{
+  "name": "jdevelop-io/exercises-tdd",
+  "description": "Starter code pour les ateliers de la formation JDevelop : TDD, concevoir par les tests.",
+  "type": "project",
+  "require-dev": {
+    "phpunit/phpunit": "^10.5"
+  },
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Jean-Denis VIDOT",
+      "email": "5817251+jh3ady@users.noreply.github.com"
+    }
+  ],
+  "require": {
+    "php": "^8.2"
+  },
+  "config": {
+    "platform": {
+      "php": "8.2.0"
+    }
+  },
+  "autoload": {
+    "psr-4": {
+      "JDevelop\\Exercises\\Tdd\\S1Fizzbuzz\\": "s1-fizzbuzz/src/",
+      "JDevelop\\Exercises\\Tdd\\S2BankAccount\\": "s2-bank-account/src/",
+      "JDevelop\\Exercises\\Tdd\\S3Gildedrose\\": "s3-gildedrose/src/"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "JDevelop\\Exercises\\Tdd\\S1Fizzbuzz\\Tests\\": "s1-fizzbuzz/tests/",
+      "JDevelop\\Exercises\\Tdd\\S2BankAccount\\Tests\\": "s2-bank-account/tests/",
+      "JDevelop\\Exercises\\Tdd\\S3Gildedrose\\Tests\\": "s3-gildedrose/tests/"
+    }
+  }
+}
