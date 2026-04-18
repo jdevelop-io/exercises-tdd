@@ -4,17 +4,8 @@ declare(strict_types=1);
 
 namespace JDevelop\Exercises\Tdd\S2BankAccount;
 
-/**
- * Atelier 2 : Account squelette à étoffer.
- *
- * À implémenter en TDD :
- *   - deposit(int $amount) : ajoute au solde, lève une exception si négatif
- *   - withdraw(int $amount) : retire du solde, lève une exception si négatif ou solde insuffisant
- *   - balance() : retourne le solde actuel
- *
- * Pas de Money value object au démarrage (utilise int en centimes pour simplifier).
- * Tu peux extraire un Money plus tard si tu veux explorer les value objects.
- */
+use InvalidArgumentException;
+
 final class Account
 {
     public function __construct(
@@ -28,7 +19,27 @@ final class Account
         return $this->balance;
     }
 
-    // À implémenter :
-    // public function deposit(int $amount): void { ... }
-    // public function withdraw(int $amount): void { ... }
+    public function deposit(int $amount): void
+    {
+        if ($amount < 0) {
+            throw new InvalidArgumentException('Le montant déposé doit être positif.');
+        }
+
+        $this->balance += $amount;
+    }
+
+    public function withdraw(int $amount): void
+    {
+        if ($amount < 0) {
+            throw new InvalidArgumentException('Le montant retiré doit être positif.');
+        }
+
+        if ($amount > $this->balance) {
+            throw new InsufficientFundsException(
+                "Solde insuffisant : tentative de retrait de $amount, solde actuel $this->balance.",
+            );
+        }
+
+        $this->balance -= $amount;
+    }
 }
