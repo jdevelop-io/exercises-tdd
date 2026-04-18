@@ -87,7 +87,7 @@ Lancer les tests :
 Les solutions complètes vivent sur des branches dédiées :
 
 - `solutions/s1` : FizzBuzz résolu en 8 tests
-- `solutions/s2` : BankAccount avec hexagonal complet (Money VO, TransferUseCase, InMemoryAccountRepository)
+- `solutions/s2` : BankAccount avec hexagonal complet (TransferUseCase, InMemoryAccountRepository, exceptions domaine)
 - `solutions/s3` : GildedRose refactoré avec Strategy pattern, tests de caractérisation, support Conjured items
 
 Pour consulter une solution :
