@@ -4,34 +4,70 @@ declare(strict_types=1);
 
 namespace JDevelop\Exercises\Tdd\S1Fizzbuzz\Tests;
 
+use JDevelop\Exercises\Tdd\S1Fizzbuzz\FizzBuzz;
 use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
 
-/**
- * Atelier 1 : implémente FizzBuzz en TDD strict.
- *
- * Règles :
- *   1. Affiche les nombres de 1 à 100, un par ligne (ou retourne un tableau).
- *   2. Pour les multiples de 3, affiche "Fizz" à la place du nombre.
- *   3. Pour les multiples de 5, affiche "Buzz" à la place du nombre.
- *   4. Pour les multiples de 3 et 5 (donc 15), affiche "FizzBuzz".
- *
- * Discipline TDD :
- *   - 1 test = 1 comportement
- *   - Refactor visible à chaque étape (vert avant refactor)
- *   - Pas de code spéculatif (n'écris que ce qui fait passer le test courant)
- *   - Cycle Red, Green, Refactor : 30 secondes à 5 minutes max
- *
- * Bonus : ajoute "Bang" pour les multiples de 7. Combine avec Fizz et Buzz.
- *
- * Tu crées la classe FizzBuzz dans `s1-fizzbuzz/src/FizzBuzz.php` et tu écris
- * les tests dans cette classe (remplace le placeholder ci-dessous).
- */
 final class FizzBuzzTest extends TestCase
 {
-    #[Test]
-    public function placeholder_a_remplacer_par_ton_premier_test(): void
+    private FizzBuzz $fizzBuzz;
+
+    protected function setUp(): void
     {
-        $this->markTestSkipped('Atelier 1 : démarre par le test "1 retourne 1".');
+        $this->fizzBuzz = new FizzBuzz();
+    }
+
+    #[Test]
+    public function test_say_returns_the_number_as_string_when_not_a_multiple(): void
+    {
+        $this->assertSame('1', $this->fizzBuzz->say(1));
+        $this->assertSame('2', $this->fizzBuzz->say(2));
+    }
+
+    #[Test]
+    public function test_say_returns_fizz_for_multiples_of_three(): void
+    {
+        $this->assertSame('Fizz', $this->fizzBuzz->say(3));
+        $this->assertSame('Fizz', $this->fizzBuzz->say(6));
+    }
+
+    #[Test]
+    public function test_say_returns_buzz_for_multiples_of_five(): void
+    {
+        $this->assertSame('Buzz', $this->fizzBuzz->say(5));
+        $this->assertSame('Buzz', $this->fizzBuzz->say(10));
+    }
+
+    #[Test]
+    public function test_say_returns_fizzbuzz_for_multiples_of_fifteen(): void
+    {
+        $this->assertSame('FizzBuzz', $this->fizzBuzz->say(15));
+        $this->assertSame('FizzBuzz', $this->fizzBuzz->say(30));
+    }
+
+    #[Test]
+    public function test_say_returns_fizz_for_nine(): void
+    {
+        $this->assertSame('Fizz', $this->fizzBuzz->say(9));
+    }
+
+    #[Test]
+    public function test_say_returns_the_number_for_seven(): void
+    {
+        $this->assertSame('7', $this->fizzBuzz->say(7));
+    }
+
+    #[Test]
+    public function test_range_returns_the_first_fifteen_results(): void
+    {
+        $expected = ['1', '2', 'Fizz', '4', 'Buzz', 'Fizz', '7', '8', 'Fizz', 'Buzz', '11', 'Fizz', '13', '14', 'FizzBuzz'];
+
+        $this->assertSame($expected, $this->fizzBuzz->range(1, 15));
+    }
+
+    #[Test]
+    public function test_range_one_to_one_returns_a_single_element(): void
+    {
+        $this->assertSame(['1'], $this->fizzBuzz->range(1, 1));
     }
 }
